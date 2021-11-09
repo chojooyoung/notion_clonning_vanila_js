@@ -76,6 +76,7 @@ export default function PostList({$target, initialState, onRemove, onAdd}){
 
             else if(className==='addDocuments'){
                 alert('페이지 추가')
+                console.log(id)
                 push(`/documents/new/${id}`)
             }
             

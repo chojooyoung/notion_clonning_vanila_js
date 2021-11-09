@@ -1,139 +1,85 @@
-# 노션 클로닝 프로젝트
-
-## 기본 요구사항
-
-바닐라 JS만을 이용해 노션을 클로닝합니다.
-
+<!--
+  템플릿은 아직 PR 작성이 익숙하지 않으신 분들을 위해서 제공하는 가이드입니다!
+  리뷰어 또는 이 PR을 보게 될 다른 사람들이 이 PR을 보는데 참고할 수 있는 내용이 있다면 포함해서 작성해주시면 됩니다.
+-->
+## 📌 과제 설명 
+바닐라 JS만을 이용해 📄**노션을 클로닝**📄합니다.
 기본적인 레이아웃은 노션과 같으며, 스타일링, 컬러값 등은 원하는대로 커스텀합니다.
 
-- 글 단위를 Document라고 합니다. Document는 Document 여러개를 포함할 수 있습니다.
-- 화면 좌측에 Root Documents를 불러오는 API를 통해 루트 Documents를 렌더링합니다.
-  - Root Document를 클릭하면 오른쪽 편집기 영역에 해당 Document의 Content를 렌더링합니다.
-  - 해당 Root Document에 하위 Document가 있는 경우, 해당 Document 아래에 트리 형태로 렌더링 합니다.
-  - Document Tree에서 각 Document 우측에는 + 버튼이 있습니다. 해당 버튼을 클릭하면, 클릭한 Document의 하위 Document로 새 Document를 생성하고 편집화면으로 넘깁니다.
-- 편집기에는 기본적으로 저장 버튼이 없습니다. Document Save API를 이용해 지속적으로 서버에 저장되도록 합니다.
-- History API를 이용해 SPA 형태로 만듭니다.
-  - 루트 URL 접속 시엔 별다른 편집기 선택이 안 된 상태입니다.
-  - /documents/{documentId} 로 접속시, 해당 Document 의 content를 불러와 편집기에 로딩합니다.
+## 👩‍💻 요구 사항과 구현 내용 
+
+## 기본 요구사항
+해당 프로젝트는 크게 **문서 목록**과 **편집기** 두가지 부분으로 구성되어있다. 
+
+-  **문서 목록** 
+   - [x] **루트 문서**들을 보여준다. 
+   - [x] 루트 문서에 **하위 문서**가 있는 경우, 해당 루트 문서 아래에 트리 형태로 보여준다.
+   - [x] **하위 문서 추가 기능** 
+       문서 우측 `+` 버튼을 클릭하면 하위 문서로 새 문서를 생성하고 편집화면에 보여준다. 
+       
+- **편집기** 
+  - [x] **자동 저장 기능** 
+      저장 버튼을 따로 두지 않고 지속적으로 서버에 저장되도록 한다.  
+- **공통** 
+  - [x] **History API**를 이용해 **SPA** 형태로 만든다. 
+  - [x] **루트 UR**L 접속 시엔 편집화면을 보여주지 않고 **메인 화면**을 보여준다. 
+  - [x]  **/documents/{documentId}** 로 접속시, 해당 문서의 **편집화면**을 띄워준다. 
+
+### UI-초기 화면📄
+
+![초기화면](https://user-images.githubusercontent.com/66211721/132082185-f5079cfc-8367-4aa5-b344-17099a46ab05.png)
+
+### UI-문서 목록📄 && 편집기📖
+
+![ui 합](https://user-images.githubusercontent.com/66211721/132082370-d803121a-f725-489d-8ef8-92a9fac75122.png)
+
+#### 기본 동작
+
+![기본동작](https://user-images.githubusercontent.com/66211721/132047811-404a4ac6-ec95-4afb-ac11-8801a6e0d4c9.gif)
+
+
+#### 페이지 하위 폴더 저장&&삭제
+![페이지하위 문서 삭제 추가](https://user-images.githubusercontent.com/66211721/132047974-d1945a74-4463-4e76-89e5-fbc6213e1fcf.gif)
+
+
+
 
 ## 보너스 요구사항
+- [x] **편집기 우측하단** 에 **🏠home** 버튼을 누르면  메인화면으로 간다.
+- [x] **하위 문서 접기/펼치기 기능**
+     - 문서 좌측 `▶` 을 클릭하면 하위 문서들을 접었다 펼칠 수 있다. 
+- [x] **문서 삭제 기능** 
+   - 문서 목록에서 각 문서 우측에는```―``` 버튼이 있다. 
+   - 해당 버튼을 클릭하면   해당 문서를 삭제하고 , 휴지통에 들어가고, 업데이트 된 문서 목록을 보여준다.
+- [x] **삭제, 추가 버튼에 마우스오버 메시지**를 띄워 사용자 편의성을 높인다.  
+- [x] **휴지통 기능** 
+   - 삭제 버튼을 누른 페이지들은 **로컬스토리지**에 저장되어 휴지통에 담는다.
+   - 휴지통 클릭시 삭제한 페이지들이 나온다
+   - 각 페이지 리스트들은 ♻(복구) ✂(삭제) 버튼을 갖는다.
+   - ♻(복구)를 누르면 페이지의 title을 수정후 복구 시킨다.
+   - ✂(삭제)를 누르면 영구삭제 확인 메세지와 함께 영구 삭제가된다.
+   - 우측 하단에 **휴지통 비우기** 를 누르면 휴지통이 비워진다.
 
-- 기본적으로 편집기는 textarea 기반으로 단순한 텍스트 편집기로 시작하되, 여력이 되면 div와 contentEditable을 조합해서 좀 더 Rich한 에디터를 만들어봅니다.
-- 편집기 최하단에는 현재 편집 중인 Document의 하위 Document 링크를 렌더링하도록 추가합니다.
-- 편집기 내에서 다른 Document name을 적은 경우, 자동으로 해당 Document의 편집 페이지로 이동하는 링크를 거는 기능을 추가합니다.
-- 그외 개선하거나 구현했으면 좋겠다는 부분이 있으면 적극적으로 구현해봅니다!
+#### 🗑휴지통-기본 동작
+![페이지삭제 휴지통삭제](https://user-images.githubusercontent.com/66211721/132048247-93bb67b3-1066-44c9-ac66-1febf3258d6f.gif)
 
-## API 사용법
+#### 🗑휴지통-✂삭제 && 전체 삭제
+![휴지통삭제 전체삭제](https://user-images.githubusercontent.com/66211721/132048446-ce10bd68-8acf-4130-9beb-fed63384ef06.gif)
 
-기본적으로 모든 API에는 headers에 아래의 값을 넣어야 합니다.
+#### 🗑휴지통-♻복구
+![휴지통복구](https://user-images.githubusercontent.com/66211721/132048768-b340463c-3824-43e4-8d70-fbb43be15282.gif)
 
-```
-'x-username': '다른 사람과 겹치지 않는 고유한 이름'
-```
+#### 🗑휴지동&&로컬스토리지 비교
+![휴지통 로컬 비교](https://user-images.githubusercontent.com/66211721/132128590-83670838-4b95-401c-87f9-cd0bfbf517fc.gif)
 
-header에 해당 값이 누락이 되면 API 호출에 실패합니다.
+## 개선사항
+- [x] 첫 화면 구성
+- [ ] 페이지 추가시 노션처럼 입력될때마다 렌더링
+- [ ] 휴지통은 로컬스토리지로 구현이 되어있기 때문에 ♻(복구) 버튼을 누를시, 로컬스토리지에서 title값만을 받아 와서, api를 통해 다시 'post' 하여 id를 받아 새로운 문서가 된다.(기존 제목에서 수정을 해야만 복구가능) 
 
-### Root Documents 가져오기
 
-전체 Document의 구조를 트리 형태로 가져옵니다.
 
-> https://kdt.roto.codes/documents - GET
 
-Response의 형태는 아래와 같습니다.
-```
-[
-  {
-    "id": 1, // Document id
-    "title": "노션을 만들자", // Document title
-    "documents": [
-      {
-        "id": 2,
-        "title": "블라블라",
-        "documents": [
-          {
-            "id": 3,
-            "title": "함냐함냐",
-            "documents": []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "title": "hello!",
-    "documents": []
-  }
-]
-```
+## ✅ 피드백 반영사항  
 
-### 특정 Document의 content 조회하기
-
-> https://kdt.roto.codes/documents/{documentId} - GET
-
-Response의 형태는 아래와 같습니다.
-
-```
-{
-  "id": 1,
-  "title": "노션을 만들자",
-  "content": "즐거운 자바스크립트의 세계!",
-  "documents": [
-    {
-      "id": 2,
-      "title": "",
-      "createdAt": "",
-      "updatedAt": ""
-    }
-  ],
-  "createdAt": "",
-  "updatedAt": ""
-}
-```
-
-### Document 생성하기
-
-> https://kdt.roto.codes/documents - POST
-
-request body에 JSON 형태로 아래처럼 값을 넣어야 합니다.
-
-```json
-{
-  "title": "문서 제목",
-  // parent가 null이면 루트 Document가 됩니다.
-  // 특정 Document에 속하게 하려면 parent에
-  // 해당 Document id를 넣으세요.
-  "parent": null
-}
-```
-
-생성에 성공하면 reponse에 아래처럼 생성된 결과를 내려줍니다.
-
-```json
-{
-  "id": 6,
-  "title": "문서 제목",
-  "createdAt": "생성된 날짜",
-  "updatedAt": "수정된 날짜"
-}
-```
-
-### 특정 Document 수정하기
-
-> https://kdt.roto.codes/documents/{documentId} - PUT
-
-request body에 수정할 내용을 JSON 형태로 넣으면 됩니다.
-```json
-{
-  "title": "제목 수정",
-  "content": "내용 수정"
-}
-```
-
-### 특정 Document 삭제하기
-
-> https://kdt.roto.codes/documents/{documentId} - DELETE
-
-documentId에 해당하는 Document를 삭제합니다.
-
-만약 하위 documents가 있는 document를 삭제한 경우, 하위 documents 등은 상위 document가 없어지므로 root document로 인식됩니다.
+## ✅ PR 포인트 & 궁금한 점 

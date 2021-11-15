@@ -3,7 +3,7 @@
   리뷰어 또는 이 PR을 보게 될 다른 사람들이 이 PR을 보는데 참고할 수 있는 내용이 있다면 포함해서 작성해주시면 됩니다.
 -->
 ## 회고록
-<a href="https://velog.io/@jzo09/Notion-Cloning-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0...-%ED%9A%8C%EA%B3%A0" target="blank">회고록<a>
+<a href="https://velog.io/@jzo09/Notion-Cloning-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0...-%ED%9A%8C%EA%B3%A0" target="blank">회고록(ctrl + 클릭)<a>
 ## 📌 프로젝트 설명 
 바닐라 JS만을 이용해 📄**노션을 클로닝**📄합니다.
 기본적인 레이아웃은 노션과 같으며, 스타일링, 컬러값 등은 원하는대로 커스텀합니다.
